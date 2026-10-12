@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Model answers for Chapter 7 Test Your Knowledge, questions 1 to 24. VCE Applied Computing Unit 2 Outcome 2.">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Network Security Answer Guide</title>
+<style>
+/* Layout: one reading column. Tracker up top, then seven textbook sections,
+   each opened by an amber badge joined to a navy bar. Answers stay closed until asked for. */
+:root {
+  --bg: #F4F6FA;
+  --surface: #FFFFFF;
+  --sunken: #EBEFF6;
+  --ink: #16233F;
+  --muted: #55607A;
+  --line: #D3DAE6;
+  --navy: #1B2B4B;
+  --on-navy: #FFFFFF;
+  --teal: #0F7C7C;
+  --on-teal: #FFFFFF;
+  --teal-soft: #DDF1EF;
+  --amber: #F5A623;
+  --on-amber: #16233F;
+  --amber-soft: #FFF3D9;
+  --coral: #C9472F;
+  --on-coral: #FFFFFF;
+  --coral-soft: #FCE7E2;
+  --purple: #6A4BA3;
+  --purple-soft: #EEE8F8;
+  --body: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --mono: "Courier New", Courier, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1524; --surface: #172138; --sunken: #111A2D; --ink: #E7ECF6; --muted: #A2ADC4;
+    --line: #2C3A59; --navy: #2A3F73; --on-navy: #FFFFFF; --teal: #56C7C2; --on-teal: #0E1524;
+    --teal-soft: #123638; --amber: #F5B041; --on-amber: #16233F; --amber-soft: #382C10;
+    --coral: #F0816F; --on-coral: #0E1524; --coral-soft: #3F201B; --purple: #B7A0E6;
+    --purple-soft: #2A2245; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1524; --surface: #172138; --sunken: #111A2D; --ink: #E7ECF6; --muted: #A2ADC4;
+  --line: #2C3A59; --navy: #2A3F73; --on-navy: #FFFFFF; --teal: #56C7C2; --on-teal: #0E1524;
+  --teal-soft: #123638; --amber: #F5B041; --on-amber: #16233F; --amber-soft: #382C10;
+  --coral: #F0816F; --on-coral: #0E1524; --coral-soft: #3F201B; --purple: #B7A0E6;
+  --purple-soft: #2A2245; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.55;
+}
+.wrap { max-width: 800px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px;
+  display: flex; flex-direction: column; gap: 28px; }
+
+/* ---------- Header ---------- */
+.eyebrow { font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--teal); font-weight: 700; margin: 0; }
+h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.12; margin: 6px 0 10px; text-wrap: balance; letter-spacing: -0.01em; }
+.lede { margin: 0; max-width: 62ch; color: var(--muted); }
+.lede strong { color: var(--ink); }
+
+/* ---------- Tracker ---------- */
+.tracker { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px;
+  display: flex; flex-direction: column; gap: 14px; }
+.tracker-top { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; }
+.tally { margin: 0; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tally b { color: var(--ink); font-size: 18px; }
+.cells { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 5px; }
+.cell { font: 700 13px/1 var(--body); font-variant-numeric: tabular-nums; text-align: center; padding: 9px 0;
+  border: 1px solid var(--line); border-radius: 3px; background: var(--sunken); color: var(--muted);
+  cursor: pointer; text-decoration: none; }
+.cell:hover { border-color: var(--teal); color: var(--ink); }
+.cell[data-r="got"] { background: var(--teal); border-color: var(--teal); color: var(--on-teal); }
+.cell[data-r="partly"] { background: var(--amber); border-color: var(--amber); color: var(--on-amber); }
+.cell[data-r="revisit"] { background: var(--coral); border-color: var(--coral); color: var(--on-coral); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0; padding: 0; list-style: none; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.legend li { display: flex; align-items: center; gap: 6px; }
+.dot { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
+.dot.got { background: var(--teal); } .dot.partly { background: var(--amber); } .dot.revisit { background: var(--coral); }
+
+.btn { font: 700 14px/1 var(--body); padding: 10px 14px; border-radius: 4px; border: 1px solid var(--navy);
+  background: var(--navy); color: var(--on-navy); cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn:hover { filter: brightness(1.12); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 8px; }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+
+/* ---------- Section header: amber badge + navy bar ---------- */
+.sec { display: flex; flex-direction: column; gap: 4px; }
+.sec-head { display: flex; align-items: stretch; margin: 0 0 6px; }
+.sec-badge { background: var(--amber); color: var(--on-amber); font: 700 13px/1 var(--body); letter-spacing: 0.04em;
+  padding: 0 12px; display: flex; align-items: center; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.sec-title { flex: 1; min-width: 0; margin: 0; background: var(--navy); color: var(--on-navy);
+  font-size: 17px; line-height: 1.25; padding: 10px 14px; text-wrap: balance; }
+
+/* ---------- Question ---------- */
+.q { padding: 16px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 16px;
+  display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 4px 8px; }
+.sec .q:last-child { border-bottom: 0; }
+.q-num { font-weight: 700; font-size: 20px; line-height: 1.3; color: var(--teal); font-variant-numeric: tabular-nums; }
+.q-main { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.q-text { margin: 0; font-weight: 700; font-size: 16px; line-height: 1.45; max-width: 64ch; }
+.q-meta { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; font-size: 12px; }
+.chip { border-radius: 3px; padding: 4px 8px; font-weight: 700; letter-spacing: 0.03em; }
+.chip.task { background: var(--purple-soft); color: var(--purple); }
+.chip.page { background: var(--sunken); color: var(--muted); font-variant-numeric: tabular-nums; }
+.chip.state { display: none; }
+.q[data-r="got"] .chip.state { display: inline-block; background: var(--teal-soft); color: var(--teal); }
+.q[data-r="partly"] .chip.state { display: inline-block; background: var(--amber-soft); color: var(--ink); }
+.q[data-r="revisit"] .chip.state { display: inline-block; background: var(--coral-soft); color: var(--coral); }
+
+details.ans > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+  font: 700 14px/1 var(--body); color: var(--teal); padding: 9px 12px; border: 1px solid var(--teal); border-radius: 4px; }
+details.ans > summary::-webkit-details-marker { display: none; }
+details.ans > summary::before { content: "+"; font-size: 16px; line-height: 0.8; width: 10px; text-align: center; }
+details.ans[open] > summary::before { content: "\2212"; }
+details.ans > summary .hide { display: none; }
+details.ans[open] > summary .show { display: none; }
+details.ans[open] > summary .hide { display: inline; }
+details.ans > summary:hover { background: var(--teal-soft); }
+
+.ans-body { margin-top: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+  padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.ans-body p { margin: 0; max-width: 66ch; }
+.ans-body p + p { margin-top: 8px; }
+.label { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+.points { margin: 0; padding-left: 20px; max-width: 66ch; }
+.points li { margin: 3px 0; }
+.points li::marker { color: var(--teal); }
+.note { background: var(--amber-soft); border-radius: 4px; padding: 10px 12px; font-size: 14px; }
+.note b { display: block; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 3px; }
+.term { font-weight: 700; }
+
+.tbl { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+thead th { background: var(--navy); color: var(--on-navy); border-color: var(--navy); }
+tbody th { background: var(--sunken); width: 24%; }
+
+/* ---------- Self check ---------- */
+.rate { border-top: 1px solid var(--line); padding-top: 12px; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+.rate .label { margin: 0; }
+.rate-btns { display: flex; flex-wrap: wrap; gap: 6px; }
+.rate button { font: 700 13px/1 var(--body); padding: 8px 12px; border-radius: 4px; cursor: pointer;
+  background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.rate button:hover { border-color: var(--ink); }
+.rate button[aria-pressed="true"][data-v="got"] { background: var(--teal); border-color: var(--teal); color: var(--on-teal); }
+.rate button[aria-pressed="true"][data-v="partly"] { background: var(--amber); border-color: var(--amber); color: var(--on-amber); }
+.rate button[aria-pressed="true"][data-v="revisit"] { background: var(--coral); border-color: var(--coral); color: var(--on-coral); }
+
+/* ---------- Vigenère bench ---------- */
+.ans-body .tbl, .ans-body .bench { margin-top: 12px; }
+.ans-body .bench .tbl { margin-top: 0; }
+.bench { background: var(--sunken); border: 1px solid var(--line); border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+.bench-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+.bench label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.bench input { font: 700 18px/1.2 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; padding: 9px 10px;
+  border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--ink); width: 100%; min-width: 0; }
+.vig { font-family: var(--mono); font-size: 16px; width: auto; }
+.vig th, .vig td { text-align: center; padding: 6px 10px; min-width: 38px; }
+.vig tbody th { font-family: var(--body); font-size: 12px; text-align: left; white-space: nowrap; width: auto; }
+.vig tr.out td { background: var(--teal-soft); color: var(--ink); font-weight: 700; }
+.vig tr.caesar td { color: var(--muted); }
+.bench-out { margin: 0; font-size: 14px; }
+.bench-out code { font: 700 16px var(--mono); letter-spacing: 0.1em; }
+
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+footer p { margin: 0; max-width: 70ch; }
+
+@media (max-width: 480px) {
+  .cells { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+  .q { grid-template-columns: 28px minmax(0, 1fr); }
+  .ans-body { padding: 13px; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">VCE Applied Computing · Unit 2 Outcome 2</p>
+    <h1>Network Security Answer Guide</h1>
+    <p class="lede">Chapter 7, Test Your Knowledge, <strong>questions 1 to 24</strong> (textbook pages 304 and 305). Write your own answer first. Then open the model answer, compare it with yours and rate how close you were. Questions are shortened here, so read the full wording in your textbook.</p>
+  </header>
+
+  <section class="tracker" aria-label="Your progress">
+    <div class="tracker-top">
+      <p class="tally"><b id="tally-n">0</b> of 24 checked</p>
+      <div class="btn-row">
+        <button class="btn" id="toggle-all" type="button">Show all answers</button>
+        <button class="btn ghost" id="reset" type="button">Clear my ratings</button>
+      </div>
+    </div>
+    <nav class="cells" id="cells" aria-label="Jump to a question"></nav>
+    <ul class="legend">
+      <li><span class="dot got"></span>Got it <span id="n-got">0</span></li>
+      <li><span class="dot partly"></span>Partly <span id="n-partly">0</span></li>
+      <li><span class="dot revisit"></span>Revisit <span id="n-revisit">0</span></li>
+    </ul>
+  </section>
+
+  <main id="sections" style="display:flex;flex-direction:column;gap:30px"></main>
+
+  <footer>
+    <p>Model answers are drawn from Chapter 7 of <i>Applied Computing VCE Units 1&amp;2</i>, pages 259 to 303. Your wording can differ. What matters is that you cover the points listed under each answer and use the correct terms.</p>
+  </footer>
+</div>
+
+<script>
+const SECTIONS = [
+  { name: "Networks", from: 1, to: 6 },
+  { name: "Wired, wireless and mobile technologies", from: 7, to: 8 },
+  { name: "Types of networks", from: 9, to: 11 },
+  { name: "Network risks and security threats", from: 12, to: 17 },
+  { name: "Ciphers and encryption", from: 18, to: 19 },
+  { name: "Ethical hacking", from: 20, to: 22 },
+  { name: "Laws", from: 23, to: 24 }
+];
+
+const QUESTIONS = [
+{ n: 1, task: "Distinguish", pages: "pp. 262–264",
+  q: "How does a WAN differ from a WPAN?",
+  a: `<p>A <span class="term">Wide Area Network (WAN)</span> is situated in more than one geographical location. It usually joins two or more LANs in different places, such as offices in Sydney and Melbourne, using third-party transmission media like an internet connection supplied by a telecommunications company.</p>
+      <p>A <span class="term">Wireless Personal Area Network (WPAN)</span> connects one person's own devices over a limited range using wireless media such as Bluetooth.</p>
+      <p>They differ in scale (cities or countries, whereas a WPAN covers a few metres), in what they connect (whole networks, whereas a WPAN connects one user's devices) and in the transmission media they use.</p>`,
+  pts: ["Define a WAN: more than one geographical location, often LANs joined over the internet.",
+        "Define a WPAN: an individual's devices, short range, wireless.",
+        "State at least one difference directly, using a word like <i>whereas</i>."] },
+
+{ n: 2, task: "Identify and justify", pages: "pp. 261–264",
+  q: "A school wants to connect all computers in one building and let students connect personal devices to nearby teacher workstations. Which type(s) of network, and why?",
+  a: `<p>A <span class="term">Local Area Network (LAN)</span> for the building. A LAN connects computers and devices in a limited geographical area such as a school, so the computers can share data, printers, software and the internet connection.</p>
+      <p>A <span class="term">Wireless Personal Area Network (WPAN)</span> for the students' devices. A WPAN links an individual's personal devices over a short range without cables, for example by Bluetooth. That suits a phone or tablet connecting to a workstation in the same room.</p>`,
+  pts: ["Name both networks: LAN and WPAN.", "Match each one to the right part of the scenario.", "Give a reason for each, based on area covered and what is being connected."],
+  note: ["Also acceptable", "You could argue the student devices join the school's wireless LAN through an access point. That earns credit if you justify it, but the word <i>nearby</i> in the question points to a WPAN."] },
+
+{ n: 3, task: "Identify and describe", pages: "pp. 262–264",
+  q: "A company needs to connect its office networks in different countries and let employees connect smartphones to nearby work computers. Identify and describe the networks needed.",
+  a: `<p>A <span class="term">Wide Area Network (WAN)</span> to connect the offices. Each office already has its own LAN. A WAN joins LANs in different geographical locations, normally over third-party transmission media such as an internet connection from a telecommunications company.</p>
+      <p>A <span class="term">Wireless Personal Area Network (WPAN)</span> for the smartphones. A WPAN uses short-range wireless media such as Bluetooth to transfer data between a user's personal devices, so a phone can connect to a work computer close by.</p>`,
+  pts: ["WAN identified and described, linked to the offices in different countries.", "WPAN identified and described, linked to the smartphones.", "Mention that each office is a LAN and that the WAN relies on third-party media."] },
+
+{ n: 4, task: "Describe", pages: "pp. 264–267",
+  q: "Describe the roles of routers and switches. How does each contribute to the network, and what are the key differences?",
+  a: `<p>A <span class="term">router</span> connects separate networks, such as several LANs or a LAN and a WAN like the internet. It looks inside each packet for the source and destination IP addresses and forwards the packet so the data reaches its final destination.</p>
+      <p>A <span class="term">switch</span> is the connecting point for the cables in a LAN. It stores the address of every device on each cable and sends a packet only down the cable that leads to the addressed device. The packet arrives quickly and does not collide with packets going to other nodes.</p>
+      <div class="tbl"><table>
+        <thead><tr><th></th><th>Router</th><th>Switch</th></tr></thead>
+        <tbody>
+          <tr><th>Connects</th><td>Networks to other networks</td><td>Devices inside one LAN</td></tr>
+          <tr><th>Address used</th><td>IP address</td><td>MAC address</td></tr>
+          <tr><th>Contribution</th><td>Gets data between networks and to the internet</td><td>Gets data to the right device quickly</td></tr>
+        </tbody>
+      </table></div>`,
+  pts: ["Role of a router: joins networks and forwards packets by IP address.", "Role of a switch: joins devices in a LAN and forwards packets by MAC address.", "At least two differences stated side by side."] },
+
+{ n: 5, task: "Explain", pages: "pp. 264–267",
+  q: "A company has network performance issues. Explain how a router and a switch could be used to optimise the network, with examples of problems each can solve.",
+  a: `<p><span class="term">Switch.</span> Problem: many staff in one department share files and printers, and the network slows down because traffic is congested and packets collide. A switch sends each packet only to the device it is addressed to, so the two devices behave as if they were directly connected. On a 100 Mbps switch, every node can send and receive at 100 Mbps at the same time.</p>
+      <p><span class="term">Router.</span> Problem: every department sits on one large network, or all traffic to the internet is slow. Routers can connect a separate LAN for each department, as in the three-floor example in Figure 7.7. Local traffic stays inside its own LAN, and the router forwards only the packets that need to go to another LAN or the internet, choosing the route by IP address.</p>`,
+  pts: ["One specific problem a switch solves, and how.", "One specific problem a router solves, and how.", "Link each fix back to better performance for the company."] },
+
+{ n: 6, task: "Explain", pages: "p. 268",
+  q: "How does an intrusion prevention system block threats to data and information?",
+  a: `<p>An <span class="term">intrusion prevention system (IPS)</span> does everything an intrusion detection system does. It monitors network traffic and analyses data packets for signs of an intrusion. It then goes a step further and tries to stop the threat without waiting for a person to act.</p>
+      <p>It blocks an intrusion by deleting suspicious data packets, resetting network connections, or blocking packets that come from a particular IP address. It can be configured with rules that tell it what to do when a particular activity is identified.</p>`,
+  pts: ["Monitors traffic like an IDS.", "Acts automatically, with no human intervention.", "Name the blocking actions: delete packets, reset connections, block an IP address."] },
+
+{ n: 7, task: "Compare and discuss", pages: "pp. 269, 275–276",
+  q: "Compare the cost implications of wired, wireless and mobile technologies, and discuss how these costs affect the choice of technology.",
+  a: `<div class="tbl"><table>
+        <thead><tr><th>Technology</th><th>Cost implications</th></tr></thead>
+        <tbody>
+          <tr><th>Wired</th><td>Highest initial set-up cost because cabling has to be bought and installed. Maintenance and changes, such as adding data points, are also time-consuming and costly. Costs rise further in remote areas.</td></tr>
+          <tr><th>Wireless</th><td>Cheaper to set up and expand than wired, especially in urban areas, because an access point replaces cabling. Rural sites may need extra infrastructure to cover larger areas.</td></tr>
+          <tr><th>Mobile</th><td>Uses a telecommunications company's network, so there is usually an ongoing charge for data. Costs can be high and vary with coverage and provider. Rural and remote areas often pay more because competition is limited.</td></tr>
+        </tbody>
+      </table></div>
+      <p>Cost is weighed against reliability, security and flexibility. An organisation with a tight budget, or one that rearranges its workspace often, is likely to choose wireless. An organisation that handles sensitive data may accept the higher up-front cost of wired for its reliability and security. An organisation with staff on the move may accept ongoing mobile charges in return for mobility. Location also matters, because all three cost more in remote areas.</p>`,
+  pts: ["A cost point for each of the three technologies.", "Compare them directly: up-front cost against ongoing cost.", "Explain how cost is traded off against other needs when deciding."] },
+
+{ n: 8, task: "Justify", pages: "pp. 269, 276",
+  q: "A new retail branch has an office (laptops) and a storefront (tablets for transactions). It needs a reliable, secure connection between the two. Wired, wireless or mobile? Justify using cost, reliability and security.",
+  a: `<p><span class="term">Recommended: wired</span> for the connection between the office and the storefront, with a wireless access point attached so the laptops and tablets can join.</p>
+      <p><span class="term">Reliability.</span> Wired connections are highly reliable with stable speeds. Wireless is subject to interference, and that matters when tablets are processing sales.</p>
+      <p><span class="term">Security.</span> Wired is more secure because a physical connection is needed. Wireless is more vulnerable to unauthorised access and eavesdropping, which is a risk for payment data.</p>
+      <p><span class="term">Cost.</span> Cabling has a higher set-up cost, but this is one branch on one site, so the cost is a one-off. Mobile would add ongoing data charges and its coverage and reliability vary.</p>`,
+  pts: ["Make one clear choice.", "Address all three criteria: cost, reliability, security.", "Refer to the scenario: transactions, laptops, tablets, one site."],
+  note: ["Either answer can earn full marks", "Wireless is also defensible: the laptops and tablets are wireless devices, it is cheaper to install and it is flexible. If you chose it, you need to say how you would manage its weaker security and reliability, for example with encryption and strong passwords on the access point. Mobile is the hardest of the three to justify here."] },
+
+{ n: 9, task: "Describe", pages: "pp. 276–277",
+  q: "Describe one similarity and one difference between an intranet and the internet.",
+  a: `<p><span class="term">Similarity.</span> Both are networks that let users communicate and reach information through a web browser. An intranet is built the same way as a website on the internet: HTML pages stored on a web server.</p>
+      <p><span class="term">Difference.</span> An intranet is private and can only be accessed by authorised users within an organisation, whereas the internet is a worldwide network of billions of devices that is open to the public.</p>`,
+  pts: ["One similarity, clearly labelled.", "One difference, clearly labelled, mentioning both networks.", "Use the words <i>private</i> and <i>worldwide</i> or <i>public</i>."] },
+
+{ n: 10, task: "Explain", pages: "p. 279",
+  q: "Explain when a user would require a virtual private network.",
+  a: `<p>A user needs a <span class="term">VPN</span> when they have to reach an organisation's private network securely from a remote location. An employee working from home or travelling, for example, uses a VPN to send and receive data over the public internet as if they were connected directly to the office intranet. They authenticate with a password or similar technique when they log in.</p>
+      <p>A VPN is also used to avoid geo-restrictions and censorship, and to protect a user's anonymity and conceal their location while browsing.</p>`,
+  pts: ["Remote access to a private network over a public network.", "Security is maintained, for example by authentication.", "A concrete situation, such as working from home."] },
+
+{ n: 11, task: "Explain", pages: "pp. 279–280",
+  q: "Explain the use of a network diagram.",
+  a: `<p>A <span class="term">network diagram</span> is a visual representation of a network that shows the nodes that make it up and how they interact. It is used as a design tool to plan and document a network's layout.</p>
+      <p>It shows devices such as desktops, laptops and mobile devices, network hardware such as servers, routers, switches and modems, and the communication methods that link them (wired, wireless or mobile). Security controls such as firewalls and authentication can be drawn or annotated on it. It is not based on the building plans, but it does identify work areas such as departments.</p>`,
+  pts: ["Visual representation of nodes and how they interact.", "What it includes: devices, hardware, communication methods, security controls.", "Its purpose: designing, documenting and understanding the network."] },
+
+{ n: 12, task: "Explain", pages: "p. 290",
+  q: "Explain how spyware collects sensitive information, how it avoids detection, and how organisations can protect against it.",
+  a: `<p><span class="term">How it operates.</span> Spyware gets onto a system through deceptive methods such as malicious websites or email attachments. Once installed it collects data about the user's activity and sends it to another location without the user knowing. Keyloggers record keystrokes to capture passwords and credit card numbers. System monitors track applications used, websites visited and files accessed. Adware tracks browsing habits.</p>
+      <p><span class="term">How it avoids detection.</span> It embeds itself in the system and runs in the background. Trojan spyware disguises itself as legitimate software while it works.</p>
+      <p><span class="term">Protection.</span> Use up-to-date antivirus and anti-spyware software, update operating systems and applications regularly, and take care with downloads and email attachments.</p>`,
+  pts: ["How it gets in and what it collects, with at least one type named.", "How it stays hidden.", "At least two protection measures."] },
+
+{ n: 13, task: "Explain", pages: "pp. 282, 289, 297",
+  q: "Explain how multi-factor authentication improves network security, with an example where it stops access even though a password is compromised.",
+  a: `<p><span class="term">MFA</span> requires two or more verification factors before access is granted: something the user knows (a password), something the user has (a security token or smartphone app) and something the user is (a fingerprint or face scan). These layers make unauthorised access much harder, because an attacker who compromises one factor still does not have the others.</p>
+      <p><span class="term">Example.</span> A keylogger captures a staff member's network password. The attacker enters the username and password, and the system then asks for the code from the authenticator app on the staff member's phone. The attacker does not have the phone, so the login fails.</p>`,
+  pts: ["Two or more factors, with the three categories named.", "Why it helps: one compromised factor is not enough.", "An example that shows the second factor stopping the attacker."] },
+
+{ n: 14, task: "Describe", pages: "pp. 282–283",
+  q: "Describe the key components of an effective backup strategy and how they reduce the impact of attacks such as ransomware.",
+  a: `<p><span class="term">Regular backups.</span> Copies of data and systems are made often, so the most recent copy is close to current and little work is lost.</p>
+      <p><span class="term">Off-site storage.</span> A copy is kept away from the main network, so an attack or disaster that hits the network cannot reach it.</p>
+      <p><span class="term">Testing.</span> Backups are tested to confirm they can be restored successfully.</p>
+      <p>Ransomware encrypts files and demands payment for the decryption key. An organisation with a recent, tested, off-site backup can restore its data without paying, and recover quickly with little data loss or downtime.</p>`,
+  pts: ["All three components: regular, off-site, tested.", "What each one contributes.", "Link to ransomware: restore the data and avoid paying the ransom."] },
+
+{ n: 15, task: "Give an example", pages: "pp. 283, 290–292",
+  q: "Give an example of how outdated software can be exploited by cyber criminals, and how updates prevent such attacks.",
+  a: `<p><span class="term">Example.</span> A security weakness is discovered in an operating system. The vendor releases a patch, but an organisation does not install it. Attackers release a worm that exploits that weakness to get into the unpatched computers. Once inside, the worm scans the network for other vulnerable systems and spreads on its own, and it can carry a payload such as ransomware.</p>
+      <p><span class="term">How updates help.</span> A software update, or patch, fixes the security vulnerability the attack depends on. A patched computer can no longer be entered that way. Updating anti-malware definitions also lets security software recognise and remove the latest threats.</p>`,
+  pts: ["A specific example of a vulnerability being exploited.", "Use the word <i>vulnerability</i> and the word <i>patch</i> or <i>update</i>.", "Explain that the update closes the gap the attacker was using."],
+  note: ["Real-world example (beyond the textbook)", "The 2017 WannaCry ransomware spread through Windows computers that had not installed a security update Microsoft had released about two months earlier. Computers that were patched were protected."] },
+
+{ n: 16, task: "Describe", pages: "pp. 267–268, 281, 288",
+  q: "Describe how a denial-of-service attack disrupts network services, the typical methods used, and how organisations can protect against them.",
+  a: `<p><span class="term">How it disrupts.</span> The attacker sends a very large number of messages asking the server to authenticate requests, each with a non-existent return address. The server tries to reply, cannot find the address and waits before closing the connection. More requests keep arriving, so the server stays busy and legitimate users cannot access the service.</p>
+      <p><span class="term">Methods.</span> Flooding with authentication requests from invalid addresses. Sending fake data packets to every computer on the network. A SYN flood, where connection requests are sent to every open port and the handshake is never completed, leaving no ports for real users. A distributed attack (DDoS), which comes from many sources at once and is harder to shut down and trace.</p>
+      <p><span class="term">Protection.</span> A firewall filters traffic by IP address and protocol. An intrusion prevention system can automatically block packets from attacking IP addresses and reset connections. Real-time monitoring, including AI-based systems, detects abnormal traffic early and alerts staff.</p>`,
+  pts: ["The effect: legitimate users are denied the service.", "At least two methods, such as SYN flood and DDoS.", "At least two protections, each tied to how it helps."],
+  note: ["Heads up", "The chapter does not list DoS defences in one place. Build this part of your answer from the sections on firewalls, intrusion prevention systems and real-time monitoring."] },
+
+{ n: 17, task: "Discuss", pages: "pp. 288–289",
+  q: "Discuss two risks associated with improper credential management.",
+  a: `<p><span class="term">Weak passwords.</span> Without a strong password policy, users choose passwords that are short, common or lack a mix of characters. These are open to brute-force attacks, where automated tools guess passwords until one works, giving the attacker unauthorised access.</p>
+      <p><span class="term">Password reuse.</span> When a user has the same password for several accounts, a breach of one system compromises every other account that shares it. A single data breach then gives an attacker access to a wide range of resources.</p>`,
+  pts: ["Two different risks.", "For each: what the poor practice is, and what it leads to."],
+  note: ["Other risks you could use", "No multi-factor authentication, so a stolen password is all an attacker needs. Credentials stored or sent unencrypted, so they can be intercepted. Slow resetting or revoking of credentials, so a former employee or a compromised account keeps its access."] },
+
+{ n: 18, task: "Describe and demonstrate", pages: "pp. 283–285",
+  q: "Describe how a message is encrypted and decrypted with the Vigenère cipher. Give a short example that shows why it is more secure than a simple substitution cipher.",
+  a: `<p><span class="term">Encrypting.</span> The key is a word. Write the keyword under the plain text, repeating it until every letter has a key letter. Each key letter gives a shift equal to its position in the alphabet, counting A as 0. Move each plain text letter forward by its shift, looping from Z back to A.</p>
+      <p><span class="term">Decrypting.</span> The receiver uses the same keyword and moves each cipher text letter backward by the same shifts.</p>
+      <p><span class="term">Example.</span> Plain text HELLO with keyword KEY (K = 10, E = 4, Y = 24) gives cipher text <b>RIJVS</b>.</p>
+      <p><span class="term">Why it is more secure.</span> A Caesar cipher uses one shift for the whole message, so the same letter always becomes the same letter. With a shift of 3, HELLO becomes KHOOR and both Ls become O. Frequency analysis can use that pattern to break the cipher. In the Vigenère version the two Ls become J and V, because each one meets a different key letter. The link between plain text and cipher text letters is hidden.</p>
+      <div class="bench">
+        <p class="label" style="margin:0">Try your own</p>
+        <div class="bench-fields">
+          <label for="vig-plain">Plain text<input id="vig-plain" type="text" value="HELLO" maxlength="14" autocomplete="off" spellcheck="false"></label>
+          <label for="vig-key">Keyword<input id="vig-key" type="text" value="KEY" maxlength="10" autocomplete="off" spellcheck="false"></label>
+        </div>
+        <div class="tbl"><table class="vig" id="vig-table"><tbody></tbody></table></div>
+        <p class="bench-out" id="vig-out"></p>
+      </div>`,
+  pts: ["Keyword repeated under the plain text.", "Each key letter sets the shift for its plain text letter (A = 0).", "Decryption reverses the shifts with the same keyword.", "A worked example with the cipher text shown.", "Security: repeated letters encrypt differently, which defeats frequency analysis."] },
+
+{ n: 19, task: "Explain", pages: "pp. 286–287",
+  q: "Explain the difference between asymmetric and symmetric key encryption.",
+  a: `<p><span class="term">Symmetric encryption</span> uses one key. The sender and the receiver both hold the same private (secret) key. The sender uses it to encrypt the data and the receiver uses it to decrypt. AES is a symmetric method.</p>
+      <p><span class="term">Asymmetric encryption</span> uses two related keys. The public key is made available to other devices and is used to encrypt data sent to the user. The private key stays on the receiving device and is the only key that can decrypt that data. RSA, ECDH and ECDSA are asymmetric methods.</p>
+      <p>The difference is one shared key for both jobs, compared with a public key to encrypt and a private key to decrypt.</p>`,
+  pts: ["Symmetric: the same key encrypts and decrypts.", "Asymmetric: public key encrypts, private key decrypts.", "Name a method for each, such as AES and RSA."] },
+
+{ n: 20, task: "Explain", pages: "p. 294",
+  q: "What is the purpose of ethical hacking, and how does it help organisations improve their security?",
+  a: `<p><span class="term">Purpose.</span> Ethical hacking, also called penetration testing or white-hat hacking, is when skilled professionals systematically probe and test systems, networks or web applications to find security vulnerabilities that a malicious attacker could exploit. The goal is to strengthen security by dealing with weaknesses before they are exploited.</p>
+      <p><span class="term">How it helps.</span> The organisation can find and fix security flaws proactively. It supports regulatory compliance, because many industries require regular penetration testing. It also improves risk management, because the organisation knows where its risks are and can assess and manage them.</p>`,
+  pts: ["Purpose: identify vulnerabilities before attackers do.", "Done by professionals to inform the organisation.", "At least two benefits: fix flaws, compliance, risk management."] },
+
+{ n: 21, task: "Name and describe", pages: "p. 294",
+  q: "Name two tools ethical hackers could use during the reconnaissance and scanning phases, and briefly describe what each does.",
+  a: `<p><span class="term">Nmap (Network Mapper)</span>, used in reconnaissance. It scans the target for open ports, the services running on the system and potential vulnerabilities.</p>
+      <p><span class="term">Nessus</span>, used in scanning. It identifies known vulnerabilities and misconfigurations within the system. OpenVAS does the same job and is an equally good answer.</p>`,
+  pts: ["Two tools named correctly.", "The function of each one."],
+  note: ["Watch out", "Metasploit is not a good answer here. It is used in the next phase, to exploit vulnerabilities and gain access."] },
+
+{ n: 22, task: "Explain", pages: "p. 294",
+  q: "What techniques do ethical hackers use to maintain their presence in a system after gaining access, and why is this step important?",
+  a: `<p><span class="term">Techniques.</span> Creating a <b>back door</b>, which is a method that bypasses normal authentication so the system can be re-entered while staying hidden from standard security measures. Installing a <b>rootkit</b>, which is a set of tools that lets an unauthorised user keep control of a system while hiding their presence deep within the operating system.</p>
+      <p><span class="term">Why it matters.</span> This step simulates how a real attacker would set up long-term access. It shows the organisation how long an intruder could stay unnoticed and whether its security measures would detect them, so those gaps can be fixed.</p>`,
+  pts: ["Back doors and rootkits, each briefly described.", "Importance: simulates a real attacker's long-term access.", "Link to the organisation improving its detection."] },
+
+{ n: 23, task: "Identify", pages: "p. 295",
+  q: "Which law regulates the handling of personal data for all Australians?",
+  a: `<p>The <span class="term">Privacy Act 1988</span> (Cwlth). It is a federal law, so it applies across Australia. It contains the 13 Australian Privacy Principles (APPs).</p>`,
+  pts: ["The Act named in full, with the year."],
+  note: ["Watch out", "The Privacy and Data Protection Act 2014 and the Health Records Act 2001 are Victorian laws. They do not cover all Australians."] },
+
+{ n: 24, task: "Explain", pages: "p. 296",
+  q: "Explain the Information Privacy Principle (IPP) of use and disclosure.",
+  a: `<p>The use and disclosure principle belongs to the <span class="term">Privacy and Data Protection Act 2014</span> (Vic). It says personal information can only be used and disclosed for the <b>primary purpose</b> for which it was collected, or for a <b>secondary purpose</b> that the person would reasonably expect.</p>
+      <p>For example, a Victorian government school collects a student's address to contact their family. It could not pass that address to a business for marketing, because that is not the purpose it was collected for and families would not reasonably expect it.</p>`,
+  pts: ["Name the Act the IPPs belong to.", "Primary purpose of collection.", "Secondary purpose only if reasonably expected.", "An example makes the explanation stronger."],
+  note: ["Textbook numbering", "Page 296 lists this principle as IPP 1. In the Act itself, Use and Disclosure is IPP 2, and IPP 1 covers Collection. Check Table 6.2 on page 209, and refer to the principle by name in your answer."] }
+];
+
+/* ---------- Saved ratings (this browser only) ---------- */
+const KEY = "ch7-answer-guide-v1";
+let ratings = {};
+try { ratings = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { ratings = {}; }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(ratings)); } catch (e) {} }
+const LABELS = { got: "Got it", partly: "Partly", revisit: "Revisit" };
+
+/* ---------- Render ---------- */
+const host = document.getElementById("sections");
+const cells = document.getElementById("cells");
+
+SECTIONS.forEach(function (s) {
+  const sec = document.createElement("section");
+  sec.className = "sec";
+  sec.innerHTML = '<div class="sec-head"><span class="sec-badge">Q' + s.from + "–" + s.to +
+    '</span><h2 class="sec-title">' + s.name + "</h2></div>";
+  QUESTIONS.filter(function (x) { return x.n >= s.from && x.n <= s.to; }).forEach(function (x) {
+    const art = document.createElement("article");
+    art.className = "q"; art.id = "q" + x.n;
+    const note = x.note ? '<div class="note"><b>' + x.note[0] + "</b>" + x.note[1] + "</div>" : "";
+    const btns = Object.keys(LABELS).map(function (v) {
+      return '<button type="button" id="rate-' + x.n + "-" + v + '" data-v="' + v + '" aria-pressed="false">' + LABELS[v] + "</button>";
+    }).join("");
+    art.innerHTML =
+      '<div class="q-num">' + x.n + "</div>" +
+      '<div class="q-main">' +
+        '<p class="q-text">' + x.q + "</p>" +
+        '<div class="q-meta"><span class="chip task">' + x.task + '</span><span class="chip page">' + x.pages +
+          '</span><span class="chip state"></span></div>' +
+        '<details class="ans" id="ans-' + x.n + '"><summary><span class="show">Show model answer</span><span class="hide">Hide model answer</span></summary>' +
+          '<div class="ans-body">' +
+            '<div><p class="label">Model answer</p>' + x.a + "</div>" +
+            '<div><p class="label">A full answer includes</p><ul class="points">' +
+              x.pts.map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ul></div>" +
+            note +
+            '<div class="rate"><p class="label">How close was yours?</p><div class="rate-btns" data-n="' + x.n + '">' + btns + "</div></div>" +
+          "</div></details>" +
+      "</div>";
+    sec.appendChild(art);
+
+    const c = document.createElement("a");
+    c.className = "cell"; c.href = "#q" + x.n; c.textContent = x.n; c.id = "cell-" + x.n;
+    cells.appendChild(c);
+  });
+  host.appendChild(sec);
+});
+
+function paint() {
+  const count = { got: 0, partly: 0, revisit: 0 };
+  QUESTIONS.forEach(function (x) {
+    const r = ratings[x.n] || "";
+    const art = document.getElementById("q" + x.n);
+    const cell = document.getElementById("cell-" + x.n);
+    if (r) { art.dataset.r = r; cell.dataset.r = r; count[r]++; }
+    else { delete art.dataset.r; delete cell.dataset.r; }
+    cell.title = "Question " + x.n + (r ? ": " + LABELS[r] : ": not checked yet");
+    art.querySelector(".chip.state").textContent = r ? LABELS[r] : "";
+    art.querySelectorAll(".rate button").forEach(function (b) {
+      b.setAttribute("aria-pressed", b.dataset.v === r ? "true" : "false");
+    });
+  });
+  document.getElementById("tally-n").textContent = count.got + count.partly + count.revisit;
+  document.getElementById("n-got").textContent = count.got;
+  document.getElementById("n-partly").textContent = count.partly;
+  document.getElementById("n-revisit").textContent = count.revisit;
+}
+
+host.addEventListener("click", function (e) {
+  const b = e.target.closest(".rate button");
+  if (!b) return;
+  const n = b.parentElement.dataset.n;
+  if (ratings[n] === b.dataset.v) delete ratings[n]; else ratings[n] = b.dataset.v;
+  save(); paint();
+});
+
+const toggleAll = document.getElementById("toggle-all");
+function syncToggle() {
+  const all = document.querySelectorAll("details.ans");
+  const open = document.querySelectorAll("details.ans[open]").length;
+  toggleAll.textContent = open === all.length ? "Hide all answers" : "Show all answers";
+}
+toggleAll.addEventListener("click", function () {
+  const all = document.querySelectorAll("details.ans");
+  const open = document.querySelectorAll("details.ans[open]").length;
+  const next = open !== all.length;
+  all.forEach(function (d) { d.open = next; });
+  syncToggle();
+});
+host.addEventListener("toggle", syncToggle, true);
+
+document.getElementById("reset").addEventListener("click", function () { ratings = {}; save(); paint(); });
+
+/* ---------- Vigenère bench (question 18) ---------- */
+const A = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+function letters(s) { return s.toUpperCase().replace(/[^A-Z]/g, ""); }
+function shiftChar(ch, k) { return A[(A.indexOf(ch) + k + 26) % 26]; }
+function vigenere(plain, key) {
+  return plain.split("").map(function (ch, i) {
+    const k = A.indexOf(key[i % key.length]);
+    return { p: ch, k: key[i % key.length], s: k, c: shiftChar(ch, k), z: shiftChar(ch, 3) };
+  });
+}
+function drawVig() {
+  const plain = letters(document.getElementById("vig-plain").value);
+  const key = letters(document.getElementById("vig-key").value);
+  const body = document.querySelector("#vig-table tbody");
+  const out = document.getElementById("vig-out");
+  if (!plain || !key) {
+    body.innerHTML = "";
+    out.textContent = "Type a plain text word and a keyword using letters A to Z.";
+    return;
+  }
+  const rows = vigenere(plain, key);
+  function row(label, f, cls) {
+    return '<tr class="' + (cls || "") + '"><th>' + label + "</th>" + rows.map(function (r) { return "<td>" + f(r) + "</td>"; }).join("") + "</tr>";
+  }
+  body.innerHTML =
+    row("Plain text", function (r) { return r.p; }) +
+    row("Keyword", function (r) { return r.k; }) +
+    row("Shift", function (r) { return r.s; }) +
+    row("Vigenère", function (r) { return r.c; }, "out") +
+    row("Caesar, shift 3", function (r) { return r.z; }, "caesar");
+  out.innerHTML = "Cipher text: <code>" + rows.map(function (r) { return r.c; }).join("") +
+    "</code>. To decrypt, move each cipher letter back by the shift above it.";
+}
+document.getElementById("vig-plain").addEventListener("input", drawVig);
+document.getElementById("vig-key").addEventListener("input", drawVig);
+
+drawVig();
+paint();
+syncToggle();
+</script>
+</body>
+</html>
